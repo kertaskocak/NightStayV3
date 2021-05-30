@@ -10,5 +10,13 @@ package nightstay3;
  * @author Turgut Reiss
  */
 public class Room {
+    private Roomtemplate[] R = new Roomtemplate[15];
+    private int jumlahkamar = 15;
     
+    public void displayAllRoom(){
+        for (int i = 0; i<jumlahkamar; i++){
+            System.out.println("\n" + R[i].displaydescription());
+        }
+    
+    };
 }
