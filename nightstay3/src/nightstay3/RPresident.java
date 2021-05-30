@@ -9,14 +9,14 @@ package nightstay3;
  *
  * @author Turgut Reiss
  */
-public class RoomRoyalSuite extends Roomtemplate{
-    double harga = 30.0;
+public class RPresident extends RTemplate{
+     double harga = 20.0;
     double total = 0;
     private int hari;
     private String roomid;
     private boolean status = false;
     
-    public RoomRoyalSuite(String id){
+    public RPresident(String id){
         roomid = id;
     }
     
@@ -41,13 +41,13 @@ public class RoomRoyalSuite extends Roomtemplate{
     @Override
     public String displaydescription(){
         String res;
-        if (status != true){
+        if (status != true) {
             res = ("Status: Available");
         } else {
             res = ("Status: Booked");
         }
         return ("Nomor Kamar: " + roomid
-                + "\no Tipe Kamar: Royal Suite"
+                + "\no Tipe Kamar: President Suite"
                 + "\no Pricing: " + harga + " /malam"
                 + "\n" + res);
     }

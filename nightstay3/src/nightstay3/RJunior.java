@@ -9,14 +9,14 @@ package nightstay3;
  *
  * @author Turgut Reiss
  */
-public class RoomJuniorSuite extends Roomtemplate{
-    private double harga = 15.0;
+public class RJunior extends RTemplate{
+     private double harga = 15.0;
     private double total = 0;
     private int hari;
     private String roomid;
     private boolean status = false;
     
-    public RoomJuniorSuite(String id){
+    public RJunior(String id){
         roomid = id;
     }
     
