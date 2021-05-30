@@ -10,7 +10,7 @@ package nightstay3;
  * @author Turgut Reiss
  */
 public class Room {
-    private Roomtemplate[] R = new Roomtemplate[15];
+    private RTemplate[] R = new RTemplate[15];
     private int jumlahkamar = 15;
     
     public void displayAllRoom(){
