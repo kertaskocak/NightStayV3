@@ -10,7 +10,9 @@ package nightstay3;
  * @author Turgut Reiss
  */
 public interface roomtemplate {
-    void description();
-    void getharga();
+    void order(int hari);
+    double getharga();
+    double getTotal();
+    void displaydescription();
     
 }
