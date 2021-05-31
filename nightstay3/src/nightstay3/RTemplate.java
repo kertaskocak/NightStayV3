@@ -14,4 +14,5 @@ abstract class RTemplate {
     public abstract double getharga();
     public abstract double getTotal();    
     public abstract String displaydescription();
+    public abstract boolean getStatus();
 }

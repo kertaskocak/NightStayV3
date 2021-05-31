@@ -13,6 +13,8 @@ public class Room {
     private RTemplate[] R = new RTemplate[9];
     private int jumlahkamar = 9;
     
+    
+    //initialize room buat di MAIN class nanti kalau baru nyala aplikasi ok
     public void InitializeRoom(){
         
         RJunior A101 = new RJunior("101");
@@ -37,6 +39,85 @@ public class Room {
         R[7] = R302;
         RRoyal R303 = new RRoyal("301");
         R[8] = R303;
+        
+    };
+    
+    public void getStat(int id){
+   
+        if (R[id].getStatus() == true) {
+            System.out.println("Occupied");
+        } else {
+            System.out.println("Available");
+        }
+    };
+    
+    public void book(String id, int durasi){
+        switch (id) {
+            case "A101": 
+                if (R[0].getStatus() == false) {
+                    R[0].order(durasi);
+                } else {
+                    System.out.println("Already Booked");
+                }
+                break;
+            case "A102":
+                if (R[1].getStatus() == false) {
+                    R[1].order(durasi);
+                } else {
+                    System.out.println("Already Booked");
+                }
+                break;
+            case "A103":
+                if (R[2].getStatus() == false) {
+                    R[2].order(durasi);
+                } else {
+                    System.out.println("Already Booked");
+                }
+                break;
+            case "P101":
+                if (R[3].getStatus() == false) {
+                    R[3].order(durasi);
+                } else {
+                    System.out.println("Already Booked");
+                }
+                break;
+            case "P102":
+                if (R[4].getStatus() == false) {
+                    R[4].order(durasi);
+                } else {
+                    System.out.println("Already Booked");
+                }
+                break;
+            case "P103":
+                if (R[5].getStatus() == false) {
+                    R[5].order(durasi);
+                } else {
+                    System.out.println("Already Booked");
+                }
+                break;
+            case "R101":
+                if (R[6].getStatus() == false) {
+                    R[6].order(durasi);
+                } else {
+                    System.out.println("Already Booked");
+                }
+                break;
+            case "R102":
+                if (R[7].getStatus() == false) {
+                    R[7].order(durasi);
+                } else {
+                    System.out.println("Already Booked");
+                }
+                break;
+            case "R103":
+                if (R[8].getStatus() == false) {
+                    R[8].order(durasi);
+                } else {
+                    System.out.println("Already Booked");
+                }
+                break;
+
+        };
         
     };
     

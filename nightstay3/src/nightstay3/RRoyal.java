@@ -25,6 +25,10 @@ public class RRoyal extends RTemplate{
         hari = h;
         total = harga * hari;
         status = true;
+        
+        System.out.println("Room Ordered: " + roomid);
+        System.out.println("Durasi: " + hari + " malam");
+        System.out.println("Subtotal: Rp" + total);
     }
 
     
@@ -39,6 +43,11 @@ public class RRoyal extends RTemplate{
     }
     
     @Override
+    public boolean getStatus(){
+        return status;
+    }
+    
+    @Override
     public String displaydescription(){
         String res;
         if (status != true){
@@ -49,6 +58,7 @@ public class RRoyal extends RTemplate{
         return ("Nomor Kamar: " + roomid
                 + "\no Tipe Kamar: Royal Suite"
                 + "\no Pricing: " + harga + " /malam"
-                + "\n" + res);
+                + "\n" + res 
+                + "\n=====================");
     }
 }
