@@ -35,9 +35,9 @@ public class Room {
         
         RRoyal R301 = new RRoyal("301");
         R[6] = R301;
-        RRoyal R302 = new RRoyal("301");
+        RRoyal R302 = new RRoyal("302");
         R[7] = R302;
-        RRoyal R303 = new RRoyal("301");
+        RRoyal R303 = new RRoyal("303");
         R[8] = R303;
         
     };

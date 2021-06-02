@@ -5,6 +5,9 @@
  */
 package nightstay3;
 import java.util.Scanner;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.DriverManager;
 
 /**
  *
@@ -31,7 +34,18 @@ public class Nightstay3 {
         
         RM.displayAllRoom();
         
+        Connection con = null;
+        String url = "jdbc:mysql://localhost:3306/nightstay";
+        String user = "root";
+        String pass = "";
         
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(url, user, pass);
+            System.out.println("Connected to Database successfully.");
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        };
         
         
     }
