@@ -48,6 +48,11 @@ public class RRoyal extends RTemplate{
     }
     
     @Override
+    public void setStatus(boolean newstat){
+        status = newstat;
+    }
+    
+    @Override
     public String displaydescription(){
         String res;
         if (status != true){
