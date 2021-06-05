@@ -5,17 +5,24 @@
  */
 package nightstay3;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Turgut Reiss
  */
 public class MainFrame1 extends javax.swing.JFrame {
-
+    
+    boolean isName = false;
     /**
      * Creates new form mainFrame
      */
     public MainFrame1() {
         initComponents();
+         home.setVisible(true);
+         register.setVisible(false);
+         roomOption.setVisible(false);
+         summary.setVisible(false);
     }
 
     /**
@@ -29,23 +36,30 @@ public class MainFrame1 extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        lblHome = new javax.swing.JLabel();
+        lblAboutUs = new javax.swing.JLabel();
+        lblAdmin = new javax.swing.JLabel();
+        lblBooking = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
+        home = new javax.swing.JPanel();
+        jTextArea1 = new javax.swing.JTextArea();
+        jButton6 = new javax.swing.JButton();
         register = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        firstnameinput = new javax.swing.JTextField();
+        lastnameinput = new javax.swing.JTextField();
+        emailinput = new javax.swing.JTextField();
         genderComboBox = new javax.swing.JComboBox<>();
-        jButton6 = new javax.swing.JButton();
+        nextbtnroomoption = new javax.swing.JButton();
         roomOption = new javax.swing.JPanel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        nextbtnsummary = new javax.swing.JButton();
+        backbtnregister = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
@@ -61,39 +75,139 @@ public class MainFrame1 extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
-        jButton3 = new javax.swing.JButton();
+        savebtn = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        backbtnroomoption = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Welcome To NIGHTSTAY HOTEL ");
-        jPanel1.add(jLabel1);
+
+        lblHome.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblHome.setForeground(new java.awt.Color(255, 255, 255));
+        lblHome.setText("Home");
+        lblHome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblHomeMouseClicked(evt);
+            }
+        });
+
+        lblAboutUs.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblAboutUs.setForeground(new java.awt.Color(255, 255, 255));
+        lblAboutUs.setText("About Us");
+
+        lblAdmin.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblAdmin.setForeground(new java.awt.Color(255, 255, 255));
+        lblAdmin.setText("Admin");
+
+        lblBooking.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblBooking.setForeground(new java.awt.Color(255, 255, 255));
+        lblBooking.setText("Booking");
+        lblBooking.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblBookingMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(89, 89, 89)
+                .addComponent(lblHome)
+                .addGap(18, 18, 18)
+                .addComponent(lblBooking)
+                .addGap(18, 18, 18)
+                .addComponent(lblAdmin)
+                .addGap(18, 18, 18)
+                .addComponent(lblAboutUs)
+                .addContainerGap(33, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblHome)
+                    .addComponent(lblAboutUs)
+                    .addComponent(jLabel1)
+                    .addComponent(lblAdmin)
+                    .addComponent(lblBooking))
+                .addGap(20, 20, 20))
+        );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, 740, 60));
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, 600));
 
+        home.setBackground(new java.awt.Color(153, 153, 255));
+
+        jTextArea1.setBackground(new java.awt.Color(153, 153, 255));
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jTextArea1.setRows(5);
+        jTextArea1.setText("5-STAR HOTEL IN MAKASAR\n\nNightStay Hotel designed to bring you an upscale modern-day hotel \nexperience from your arrival to your next time. Perfectly located \nin the heart of Makasar, near the highway and 30 minutes from Airport, \nour 5-star hotel is within easy reach of Makasar's prestigious corporations, \nlandmark attractions, and shopping centers, restaurants, and nightlife.");
+        jTextArea1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jButton6.setText("Next");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout homeLayout = new javax.swing.GroupLayout(home);
+        home.setLayout(homeLayout);
+        homeLayout.setHorizontalGroup(
+            homeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homeLayout.createSequentialGroup()
+                .addContainerGap(77, Short.MAX_VALUE)
+                .addGroup(homeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton6)
+                    .addComponent(jTextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(66, 66, 66))
+        );
+        homeLayout.setVerticalGroup(
+            homeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(homeLayout.createSequentialGroup()
+                .addGap(160, 160, 160)
+                .addComponent(jTextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+                .addComponent(jButton6)
+                .addGap(57, 57, 57))
+        );
+
+        jLayeredPane1.add(home);
+        home.setBounds(0, 0, 740, 540);
+
         register.setBackground(new java.awt.Color(255, 255, 204));
 
         jLabel2.setFont(new java.awt.Font("Trajan Pro", 1, 24)); // NOI18N
         jLabel2.setText("Register");
 
-        jTextField1.setText("First Name");
+        firstnameinput.setText("First Name");
 
-        jTextField2.setText("Last Name");
+        lastnameinput.setText("Last Name");
 
-        jTextField3.setText("Email");
+        emailinput.setText("Email");
 
         genderComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pria", "Wanita" }));
 
-        jButton6.setText("Next");
+        nextbtnroomoption.setText("Next");
+        nextbtnroomoption.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextbtnroomoptionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout registerLayout = new javax.swing.GroupLayout(register);
         register.setLayout(registerLayout);
@@ -103,11 +217,11 @@ public class MainFrame1 extends javax.swing.JFrame {
                 .addContainerGap(406, Short.MAX_VALUE)
                 .addGroup(registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lastnameinput, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(firstnameinput, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(emailinput, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(genderComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton6))
+                        .addComponent(nextbtnroomoption))
                     .addComponent(jLabel2))
                 .addGap(69, 69, 69))
         );
@@ -117,15 +231,15 @@ public class MainFrame1 extends javax.swing.JFrame {
                 .addGap(51, 51, 51)
                 .addComponent(jLabel2)
                 .addGap(30, 30, 30)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(firstnameinput, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lastnameinput, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(emailinput, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
                 .addComponent(genderComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(61, 61, 61)
-                .addComponent(jButton6)
+                .addComponent(nextbtnroomoption)
                 .addGap(70, 70, 70))
         );
 
@@ -145,9 +259,19 @@ public class MainFrame1 extends javax.swing.JFrame {
 
         jLabel4.setText("Check Out");
 
-        jButton1.setText("Next");
+        nextbtnsummary.setText("Next");
+        nextbtnsummary.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextbtnsummaryActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Back");
+        backbtnregister.setText("Back");
+        backbtnregister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backbtnregisterActionPerformed(evt);
+            }
+        });
 
         jButton7.setText("Junior");
 
@@ -164,16 +288,6 @@ public class MainFrame1 extends javax.swing.JFrame {
             .addGroup(roomOptionLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addGroup(roomOptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(roomOptionLayout.createSequentialGroup()
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(144, 144, 144)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(roomOptionLayout.createSequentialGroup()
-                        .addComponent(jButton9)
-                        .addGap(221, 221, 221)
-                        .addGroup(roomOptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
-                            .addComponent(jLabel5)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roomOptionLayout.createSequentialGroup()
                         .addGroup(roomOptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel16)
@@ -181,11 +295,20 @@ public class MainFrame1 extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(roomOptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(roomOptionLayout.createSequentialGroup()
+                        .addGroup(roomOptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton9))
+                        .addGap(144, 144, 144)
+                        .addGroup(roomOptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(backbtnregister)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(34, 34, 34)
                 .addGroup(roomOptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addComponent(jButton1))
+                    .addComponent(nextbtnsummary))
                 .addContainerGap(221, Short.MAX_VALUE))
         );
         roomOptionLayout.setVerticalGroup(
@@ -207,8 +330,8 @@ public class MainFrame1 extends javax.swing.JFrame {
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(roomOptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2))
+                            .addComponent(nextbtnsummary)
+                            .addComponent(backbtnregister))
                         .addGap(86, 86, 86))
                     .addGroup(roomOptionLayout.createSequentialGroup()
                         .addComponent(jButton7)
@@ -253,11 +376,16 @@ public class MainFrame1 extends javax.swing.JFrame {
 
         jCheckBox1.setText("Payed");
 
-        jButton3.setText("Print");
+        savebtn.setText("Save");
 
         jButton4.setText("Send to Mail");
 
-        jButton5.setText("Back");
+        backbtnroomoption.setText("Back");
+        backbtnroomoption.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backbtnroomoptionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout summaryLayout = new javax.swing.GroupLayout(summary);
         summary.setLayout(summaryLayout);
@@ -274,7 +402,7 @@ public class MainFrame1 extends javax.swing.JFrame {
                                 .addComponent(jLabel10))
                             .addGroup(summaryLayout.createSequentialGroup()
                                 .addGroup(summaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton5)
+                                    .addComponent(backbtnroomoption)
                                     .addComponent(jLabel8)
                                     .addComponent(jLabel9)
                                     .addComponent(jLabel13))
@@ -283,7 +411,7 @@ public class MainFrame1 extends javax.swing.JFrame {
                                     .addGroup(summaryLayout.createSequentialGroup()
                                         .addComponent(jButton4)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton3))
+                                        .addComponent(savebtn))
                                     .addGroup(summaryLayout.createSequentialGroup()
                                         .addGroup(summaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel14)
@@ -324,8 +452,8 @@ public class MainFrame1 extends javax.swing.JFrame {
                 .addComponent(jCheckBox1)
                 .addGap(79, 79, 79)
                 .addGroup(summaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton5)
+                    .addComponent(savebtn)
+                    .addComponent(backbtnroomoption)
                     .addComponent(jButton4))
                 .addGap(0, 85, Short.MAX_VALUE))
         );
@@ -337,6 +465,69 @@ public class MainFrame1 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void nextbtnroomoptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextbtnroomoptionActionPerformed
+        String firstnameattempt = firstnameinput.getText();
+        String lastnameattempt = lastnameinput.getText();
+        String emailattempt = emailinput.getText();
+
+        if (firstnameattempt.trim().isEmpty() || lastnameattempt.trim().isEmpty() || emailattempt.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Error you did not enter a name/email properly, please try again.",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            isName = true;
+            home.setVisible(false);
+            register.setVisible(false);
+            roomOption.setVisible(true);
+            summary.setVisible(false);
+        }
+    }//GEN-LAST:event_nextbtnroomoptionActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+
+         home.setVisible(false);
+         register.setVisible(true);
+         roomOption.setVisible(false);
+         summary.setVisible(false);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void nextbtnsummaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextbtnsummaryActionPerformed
+         
+         home.setVisible(false);
+         register.setVisible(false);
+         roomOption.setVisible(false);
+         summary.setVisible(true);
+    }//GEN-LAST:event_nextbtnsummaryActionPerformed
+
+    private void backbtnregisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnregisterActionPerformed
+         
+         home.setVisible(false);
+         register.setVisible(true);
+         roomOption.setVisible(false);
+         summary.setVisible(false);
+    }//GEN-LAST:event_backbtnregisterActionPerformed
+
+    private void backbtnroomoptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnroomoptionActionPerformed
+         
+         home.setVisible(false);
+         register.setVisible(false);
+         roomOption.setVisible(true);
+         summary.setVisible(false);
+    }//GEN-LAST:event_backbtnroomoptionActionPerformed
+
+    private void lblHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHomeMouseClicked
+         home.setVisible(true);
+         register.setVisible(false);
+         roomOption.setVisible(false);
+         summary.setVisible(false);
+    }//GEN-LAST:event_lblHomeMouseClicked
+
+    private void lblBookingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBookingMouseClicked
+         home.setVisible(false);
+         register.setVisible(true);
+         roomOption.setVisible(false);
+         summary.setVisible(false);
+    }//GEN-LAST:event_lblBookingMouseClicked
 
     /**
      * @param args the command line arguments
@@ -377,12 +568,13 @@ public class MainFrame1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backbtnregister;
+    private javax.swing.JButton backbtnroomoption;
+    private javax.swing.JTextField emailinput;
+    private javax.swing.JTextField firstnameinput;
     private javax.swing.JComboBox<String> genderComboBox;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JPanel home;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
@@ -408,11 +600,17 @@ public class MainFrame1 extends javax.swing.JFrame {
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField lastnameinput;
+    private javax.swing.JLabel lblAboutUs;
+    private javax.swing.JLabel lblAdmin;
+    private javax.swing.JLabel lblBooking;
+    private javax.swing.JLabel lblHome;
+    private javax.swing.JButton nextbtnroomoption;
+    private javax.swing.JButton nextbtnsummary;
     private javax.swing.JPanel register;
     private javax.swing.JPanel roomOption;
+    private javax.swing.JButton savebtn;
     private javax.swing.JPanel summary;
     // End of variables declaration//GEN-END:variables
 }
