@@ -5,7 +5,14 @@
  */
 package nightstay3;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Scanner;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 
 /**
  *
@@ -18,13 +25,65 @@ public class MainFrame1 extends javax.swing.JFrame {
      * Creates new form mainFrame
      */
     public MainFrame1() {
-        initComponents();
+         initComponents();
          home.setVisible(true);
          register.setVisible(false);
          roomOption.setVisible(false);
          summary.setVisible(false);
+        showDate();
+        showTime();
+        
+        Scanner inp = new Scanner(System.in);
+        
+        Room RM = new Room();
+        
+        RM.InitializeRoom();
+        
+        
+        RM.book("A101", 4);
+        RM.getStat(0);
+        
+        //RM.displayAllRoom();
+        
+        Connection con = null;
+        String url = "jdbc:mysql://localhost:3306/nightstay";
+        String user = "root";
+        String pass = "";
+    }
+    
+      void showDate() {
+        Date currentdate = new Date();
+        
+        SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat d = new SimpleDateFormat("dd");
+        SimpleDateFormat m = new SimpleDateFormat("MM");
+        SimpleDateFormat y = new SimpleDateFormat("yyyy");
+        
+          datelabel2.setText(d.format(currentdate));
+          monthlabel.setText(m.format(currentdate));
+          yearlabel.setText(y.format(currentdate));
+          
     }
 
+    void showTime() {
+        new Timer(0, new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Date d = new Date();
+                SimpleDateFormat o = new SimpleDateFormat("hh:mm:ss");
+                SimpleDateFormat h = new SimpleDateFormat("hh");
+                SimpleDateFormat m = new SimpleDateFormat("mm");
+                SimpleDateFormat s = new SimpleDateFormat("ss");
+                secondslabel.setText(s.format(d));
+                minutelabel.setText(m.format(d));
+                hourlabel.setText(h.format(d));
+            }
+
+        }).start();
+    }
+    
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,6 +100,13 @@ public class MainFrame1 extends javax.swing.JFrame {
         lblAdmin = new javax.swing.JLabel();
         lblBooking = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        hourlabel = new javax.swing.JLabel();
+        minutelabel = new javax.swing.JLabel();
+        secondslabel = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        datelabel2 = new javax.swing.JLabel();
+        monthlabel = new javax.swing.JLabel();
+        yearlabel = new javax.swing.JLabel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         home = new javax.swing.JPanel();
         jTextArea1 = new javax.swing.JTextArea();
@@ -133,7 +199,7 @@ public class MainFrame1 extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(11, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblHome)
                     .addComponent(lblAboutUs)
@@ -144,6 +210,41 @@ public class MainFrame1 extends javax.swing.JFrame {
         );
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
+
+        hourlabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        hourlabel.setForeground(new java.awt.Color(255, 255, 255));
+        hourlabel.setText("HOUR");
+        jPanel2.add(hourlabel);
+
+        minutelabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        minutelabel.setForeground(new java.awt.Color(255, 255, 255));
+        minutelabel.setText("MINS");
+        jPanel2.add(minutelabel);
+
+        secondslabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        secondslabel.setForeground(new java.awt.Color(255, 255, 255));
+        secondslabel.setText("SECS");
+        jPanel2.add(secondslabel);
+
+        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setText("===");
+        jPanel2.add(jLabel19);
+
+        datelabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        datelabel2.setForeground(new java.awt.Color(255, 255, 255));
+        datelabel2.setText("DATE");
+        jPanel2.add(datelabel2);
+
+        monthlabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        monthlabel.setForeground(new java.awt.Color(255, 255, 255));
+        monthlabel.setText("MNTH");
+        jPanel2.add(monthlabel);
+
+        yearlabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        yearlabel.setForeground(new java.awt.Color(255, 255, 255));
+        yearlabel.setText("YEAR");
+        jPanel2.add(yearlabel);
 
         home.setBackground(new java.awt.Color(153, 153, 255));
 
@@ -583,10 +684,12 @@ public class MainFrame1 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backbtnregister;
     private javax.swing.JButton backbtnroomoption;
+    private javax.swing.JLabel datelabel2;
     private javax.swing.JTextField emailinput;
     private javax.swing.JTextField firstnameinput;
     private javax.swing.JComboBox<String> genderComboBox;
     private javax.swing.JPanel home;
+    private javax.swing.JLabel hourlabel;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
@@ -602,6 +705,7 @@ public class MainFrame1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -619,11 +723,15 @@ public class MainFrame1 extends javax.swing.JFrame {
     private javax.swing.JLabel lblAdmin;
     private javax.swing.JLabel lblBooking;
     private javax.swing.JLabel lblHome;
+    private javax.swing.JLabel minutelabel;
+    private javax.swing.JLabel monthlabel;
     private javax.swing.JButton nextbtnroomoption;
     private javax.swing.JButton nextbtnsummary;
     private javax.swing.JPanel register;
     private javax.swing.JPanel roomOption;
     private javax.swing.JButton savebtn;
+    private javax.swing.JLabel secondslabel;
     private javax.swing.JPanel summary;
+    private javax.swing.JLabel yearlabel;
     // End of variables declaration//GEN-END:variables
 }
