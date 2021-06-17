@@ -9,9 +9,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.Timer;
 
 /**
@@ -21,6 +24,9 @@ import javax.swing.Timer;
 public class MainFrame1 extends javax.swing.JFrame {
     
     boolean isName = false;
+     Room RM = new Room();
+        
+
     /**
      * Creates new form mainFrame
      */
@@ -35,13 +41,12 @@ public class MainFrame1 extends javax.swing.JFrame {
         
         Scanner inp = new Scanner(System.in);
         
-        Room RM = new Room();
         
         RM.InitializeRoom();
         
         
-        RM.book("A101", 4);
-        RM.getStat(0);
+        //RM.book("A101", 4);
+        //RM.getStat(0);
         
         //RM.displayAllRoom();
         
@@ -118,10 +123,13 @@ public class MainFrame1 extends javax.swing.JFrame {
         emailinput = new javax.swing.JTextField();
         genderComboBox = new javax.swing.JComboBox<>();
         nextbtnroomoption = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
         roomOption = new javax.swing.JPanel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        roomtypecombobox = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         nextbtnsummary = new javax.swing.JButton();
@@ -130,20 +138,26 @@ public class MainFrame1 extends javax.swing.JFrame {
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
+        checkin = new com.toedter.calendar.JDateChooser();
+        checkout = new com.toedter.calendar.JDateChooser();
         summary = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        finalroom = new javax.swing.JLabel();
+        finalduration = new javax.swing.JLabel();
+        finalroomprice = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        finalprice = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
         savebtn = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         backbtnroomoption = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        finalcheckin = new javax.swing.JLabel();
+        finalcheckout = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -291,12 +305,6 @@ public class MainFrame1 extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Trajan Pro", 1, 24)); // NOI18N
         jLabel2.setText("Register");
 
-        firstnameinput.setText("First Name");
-
-        lastnameinput.setText("Last Name");
-
-        emailinput.setText("Email");
-
         genderComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pria", "Wanita" }));
 
         nextbtnroomoption.setText("Next");
@@ -306,12 +314,23 @@ public class MainFrame1 extends javax.swing.JFrame {
             }
         });
 
+        jLabel15.setText("First Name");
+
+        jLabel17.setText("Last Name");
+
+        jLabel18.setText("Email");
+
         javax.swing.GroupLayout registerLayout = new javax.swing.GroupLayout(register);
         register.setLayout(registerLayout);
         registerLayout.setHorizontalGroup(
             registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(registerLayout.createSequentialGroup()
-                .addContainerGap(406, Short.MAX_VALUE)
+                .addContainerGap(291, Short.MAX_VALUE)
+                .addGroup(registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel15)
+                    .addComponent(jLabel17)
+                    .addComponent(jLabel18))
+                .addGap(64, 64, 64)
                 .addGroup(registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(lastnameinput, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -328,11 +347,17 @@ public class MainFrame1 extends javax.swing.JFrame {
                 .addGap(51, 51, 51)
                 .addComponent(jLabel2)
                 .addGap(30, 30, 30)
-                .addComponent(firstnameinput, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(firstnameinput, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel15))
                 .addGap(46, 46, 46)
-                .addComponent(lastnameinput, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lastnameinput, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17))
                 .addGap(46, 46, 46)
-                .addComponent(emailinput, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(emailinput, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel18))
                 .addGap(46, 46, 46)
                 .addComponent(genderComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(61, 61, 61)
@@ -345,12 +370,21 @@ public class MainFrame1 extends javax.swing.JFrame {
 
         roomOption.setBackground(new java.awt.Color(102, 204, 255));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Trajan Pro", 1, 24)); // NOI18N
         jLabel3.setText("Room Type");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        roomtypecombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Junior", "President", "Royal", " " }));
+        roomtypecombobox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                roomtypecomboboxActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Check In");
 
@@ -378,6 +412,10 @@ public class MainFrame1 extends javax.swing.JFrame {
 
         jLabel16.setText("Information");
 
+        checkin.setDateFormatString("yyyy-MM-dd");
+
+        checkout.setDateFormatString("yyyy-MM-dd");
+
         javax.swing.GroupLayout roomOptionLayout = new javax.swing.GroupLayout(roomOption);
         roomOption.setLayout(roomOptionLayout);
         roomOptionLayout.setHorizontalGroup(
@@ -392,21 +430,31 @@ public class MainFrame1 extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(roomOptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(roomtypecombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(roomOptionLayout.createSequentialGroup()
                         .addGroup(roomOptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton9))
-                        .addGap(144, 144, 144)
                         .addGroup(roomOptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(backbtnregister)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(34, 34, 34)
+                            .addGroup(roomOptionLayout.createSequentialGroup()
+                                .addGap(144, 144, 144)
+                                .addGroup(roomOptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(backbtnregister)
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(roomOptionLayout.createSequentialGroup()
+                                .addGap(125, 125, 125)
+                                .addComponent(checkin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGroup(roomOptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(nextbtnsummary))
-                .addContainerGap(221, Short.MAX_VALUE))
+                    .addGroup(roomOptionLayout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(roomOptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(nextbtnsummary)))
+                    .addGroup(roomOptionLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(checkout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         roomOptionLayout.setVerticalGroup(
             roomOptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -416,20 +464,27 @@ public class MainFrame1 extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jLabel16))
                 .addGap(39, 39, 39)
-                .addGroup(roomOptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(roomOptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(roomOptionLayout.createSequentialGroup()
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(roomtypecombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(46, 46, 46)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(52, 52, 52)
                         .addGroup(roomOptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(roomOptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nextbtnsummary)
-                            .addComponent(backbtnregister))
-                        .addGap(86, 86, 86))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(roomOptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(roomOptionLayout.createSequentialGroup()
+                                .addComponent(checkin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(roomOptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(nextbtnsummary)
+                                    .addComponent(backbtnregister))
+                                .addGap(86, 86, 86))
+                            .addGroup(roomOptionLayout.createSequentialGroup()
+                                .addComponent(checkout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(roomOptionLayout.createSequentialGroup()
                         .addComponent(jButton7)
                         .addGap(57, 57, 57)
@@ -451,25 +506,25 @@ public class MainFrame1 extends javax.swing.JFrame {
         jLabel7.setText("Type Room");
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel8.setText("Date");
+        jLabel8.setText("Duration");
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel9.setText("Room/Night");
 
-        jLabel10.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel10.setText(": x");
+        finalroom.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        finalroom.setText(": x");
 
-        jLabel11.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel11.setText(": x");
+        finalduration.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        finalduration.setText(": x");
 
-        jLabel12.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel12.setText(": x / Night");
+        finalroomprice.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        finalroomprice.setText(": x / Night");
 
         jLabel13.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel13.setText("Total");
 
-        jLabel14.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel14.setText(": x");
+        finalprice.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        finalprice.setText(": x");
 
         jCheckBox1.setText("Payed");
 
@@ -484,6 +539,18 @@ public class MainFrame1 extends javax.swing.JFrame {
             }
         });
 
+        jLabel10.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel10.setText("Check in");
+
+        jLabel20.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel20.setText("Check out");
+
+        finalcheckin.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        finalcheckin.setText(": x");
+
+        finalcheckout.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        finalcheckout.setText(": x");
+
         javax.swing.GroupLayout summaryLayout = new javax.swing.GroupLayout(summary);
         summary.setLayout(summaryLayout);
         summaryLayout.setHorizontalGroup(
@@ -491,37 +558,48 @@ public class MainFrame1 extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, summaryLayout.createSequentialGroup()
                 .addGroup(summaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(summaryLayout.createSequentialGroup()
+                        .addGap(448, 448, 448)
+                        .addComponent(jLabel6)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(summaryLayout.createSequentialGroup()
                         .addGap(417, 417, 417)
                         .addGroup(summaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(summaryLayout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(37, 37, 37)
-                                .addComponent(jLabel10))
-                            .addGroup(summaryLayout.createSequentialGroup()
                                 .addGroup(summaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(backbtnroomoption)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel13))
-                                .addGap(37, 37, 37)
+                                    .addComponent(jLabel8))
+                                .addGap(51, 51, 51)
                                 .addGroup(summaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(summaryLayout.createSequentialGroup()
                                         .addComponent(jButton4)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(savebtn))
                                     .addGroup(summaryLayout.createSequentialGroup()
+                                        .addComponent(finalduration)
+                                        .addGap(0, 175, Short.MAX_VALUE))))
+                            .addGroup(summaryLayout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(37, 37, 37)
+                                .addComponent(finalroom)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(summaryLayout.createSequentialGroup()
+                                .addGroup(summaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel13)
+                                    .addComponent(jLabel20)
+                                    .addComponent(jLabel10))
+                                .addGap(37, 37, 37)
+                                .addGroup(summaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(summaryLayout.createSequentialGroup()
+                                        .addComponent(finalprice)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jCheckBox1))
+                                    .addGroup(summaryLayout.createSequentialGroup()
                                         .addGroup(summaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel14)
-                                            .addComponent(jLabel12)
-                                            .addComponent(jLabel11))
-                                        .addGap(0, 0, Short.MAX_VALUE))))))
-                    .addGroup(summaryLayout.createSequentialGroup()
-                        .addGap(448, 448, 448)
-                        .addComponent(jLabel6)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(summaryLayout.createSequentialGroup()
-                        .addContainerGap(657, Short.MAX_VALUE)
-                        .addComponent(jCheckBox1)))
+                                            .addComponent(finalroomprice)
+                                            .addComponent(finalcheckout)
+                                            .addComponent(finalcheckin))
+                                        .addGap(0, 0, Short.MAX_VALUE)))))))
                 .addGap(28, 28, 28))
         );
         summaryLayout.setVerticalGroup(
@@ -532,22 +610,29 @@ public class MainFrame1 extends javax.swing.JFrame {
                 .addGap(80, 80, 80)
                 .addGroup(summaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jLabel10))
+                    .addComponent(finalroom))
                 .addGap(30, 30, 30)
                 .addGroup(summaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
+                    .addComponent(finalduration)
                     .addComponent(jLabel8))
-                .addGap(30, 30, 30)
+                .addGap(26, 26, 26)
+                .addGroup(summaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(finalcheckin))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(summaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel20)
+                    .addComponent(finalcheckout))
+                .addGap(25, 25, 25)
                 .addGroup(summaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jLabel12))
-                .addGap(30, 30, 30)
+                    .addComponent(finalroomprice))
+                .addGap(28, 28, 28)
                 .addGroup(summaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(jLabel13))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox1)
-                .addGap(79, 79, 79)
+                    .addComponent(finalprice)
+                    .addComponent(jLabel13)
+                    .addComponent(jCheckBox1))
+                .addGap(34, 34, 34)
                 .addGroup(summaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(savebtn)
                     .addComponent(backbtnroomoption)
@@ -607,10 +692,86 @@ public class MainFrame1 extends javax.swing.JFrame {
 
     private void nextbtnsummaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextbtnsummaryActionPerformed
          
-         home.setVisible(false);
-         register.setVisible(false);
-         roomOption.setVisible(false);
-         summary.setVisible(true);
+         String checkinattempt = ((JTextField) checkin.getDateEditor().getUiComponent()).getText();
+        String checkoutattempt = ((JTextField) checkout.getDateEditor().getUiComponent()).getText();
+
+        Date checkindate = checkin.getDate();
+        Date checkoutdate = checkout.getDate();
+        
+        Date currentdate = new Date();
+        SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
+        String crtdt = (s.format(currentdate));
+        // LocalDate chkinday = LocalDate.parse(checkinattempt);
+        // LocalDate chkoutday = LocalDate.parse(checkoutattempt);
+
+        // Long day_gap = ChronoUnit.DAYS.between(chkinday, chkoutday);
+
+        
+        String room = roomtypecombobox.getSelectedItem().toString();
+        String froom;
+        String room_num = jComboBox1.getSelectedItem().toString();
+        
+        int roomnum = Integer.parseInt(room_num);
+
+        switch (room_num){
+            case "A101":
+                froom = RM.roomchooser(101);
+                break;
+            case "A102":
+                froom = RM.roomchooser(102);
+                break;
+            case "A103":
+                froom = RM.roomchooser(103);
+                break;
+            case "B201":
+                froom = RM.roomchooser(201);
+                break;
+            case "B202":
+                froom = RM.roomchooser(202);
+                break;
+            case "B203":
+                froom = RM.roomchooser(203);
+                break;
+            case "C301":
+                froom = RM.roomchooser(301);
+                break;
+            case "C302":
+                froom = RM.roomchooser(302);
+                break;
+            case "C303":
+                froom = RM.roomchooser(303);
+                break;
+
+        }
+       
+
+        if (!(checkindate == null) && !(checkoutdate == null)) {
+
+            LocalDate chkinday = LocalDate.parse(checkinattempt);
+            LocalDate chkoutday = LocalDate.parse(checkoutattempt);
+
+            Long day_gap = ChronoUnit.DAYS.between(chkinday, chkoutday);
+
+            if (!(day_gap <= 0) && !(checkindate.before(currentdate)) ) {
+                int finaltotal = (int) (day_gap * RM.getHarga(roomnum));
+                home.setVisible(false);
+                register.setVisible(false);
+                roomOption.setVisible(false);
+                summary.setVisible(true);
+                finalroom.setText(": " + roomtypecombobox.getSelectedItem().toString() + "(" + room_num + ")");
+                finalduration.setText(": " + String.valueOf(day_gap) + " hari");
+                finalroomprice.setText(": Rp" + RM.getHarga(roomnum) + " /malam");
+                finalprice.setText(": Rp" + finaltotal);
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "Please input an appropriate date",
+                        "Message!", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Please input an appropriate date", "Message!",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+         
     }//GEN-LAST:event_nextbtnsummaryActionPerformed
 
     private void backbtnregisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnregisterActionPerformed
@@ -643,6 +804,44 @@ public class MainFrame1 extends javax.swing.JFrame {
          summary.setVisible(false);
     }//GEN-LAST:event_lblBookingMouseClicked
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void roomtypecomboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomtypecomboboxActionPerformed
+        // TODO add your handling code here:
+        String room = roomtypecombobox.getSelectedItem().toString();
+     
+        try{
+            switch (room) {
+                case "Junior":
+                    jComboBox1.removeAllItems();
+                    jComboBox1.addItem("101");
+                    jComboBox1.addItem("102");
+                    jComboBox1.addItem("103");
+                    break;
+                case "President":
+                    jComboBox1.removeAllItems();
+                    jComboBox1.addItem("201");
+                    jComboBox1.addItem("202");
+                    jComboBox1.addItem("203");
+                    break;
+                case "Royal":
+                    jComboBox1.removeAllItems();
+                    jComboBox1.addItem("301");
+                    jComboBox1.addItem("302");
+                    jComboBox1.addItem("303");
+                    break;
+                default:
+                    jComboBox1.removeAllItems();
+                    break;
+            } }catch (Exception e) {
+            throw new RuntimeException(e);
+
+        }
+    }//GEN-LAST:event_roomtypecomboboxActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -672,7 +871,7 @@ public class MainFrame1 extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-
+       
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -684,8 +883,16 @@ public class MainFrame1 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backbtnregister;
     private javax.swing.JButton backbtnroomoption;
+    private com.toedter.calendar.JDateChooser checkin;
+    private com.toedter.calendar.JDateChooser checkout;
     private javax.swing.JLabel datelabel2;
     private javax.swing.JTextField emailinput;
+    private javax.swing.JLabel finalcheckin;
+    private javax.swing.JLabel finalcheckout;
+    private javax.swing.JLabel finalduration;
+    private javax.swing.JLabel finalprice;
+    private javax.swing.JLabel finalroom;
+    private javax.swing.JLabel finalroomprice;
     private javax.swing.JTextField firstnameinput;
     private javax.swing.JComboBox<String> genderComboBox;
     private javax.swing.JPanel home;
@@ -697,16 +904,16 @@ public class MainFrame1 extends javax.swing.JFrame {
     private javax.swing.JButton jButton9;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -729,6 +936,7 @@ public class MainFrame1 extends javax.swing.JFrame {
     private javax.swing.JButton nextbtnsummary;
     private javax.swing.JPanel register;
     private javax.swing.JPanel roomOption;
+    private javax.swing.JComboBox<String> roomtypecombobox;
     private javax.swing.JButton savebtn;
     private javax.swing.JLabel secondslabel;
     private javax.swing.JPanel summary;
