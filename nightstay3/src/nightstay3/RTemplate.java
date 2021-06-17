@@ -16,6 +16,7 @@ abstract class RTemplate {
     public abstract String displaydescription();
     public abstract boolean getStatus();
     public abstract void setStatus(boolean newstat);
+    public abstract String roomchooser();
     
     //RoomID, harga, status, TIME(Database).
 }

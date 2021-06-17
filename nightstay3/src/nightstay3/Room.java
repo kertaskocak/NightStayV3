@@ -74,42 +74,42 @@ public class Room {
                     System.out.println("Already Booked");
                 }
                 break;
-            case "P101":
+            case "P201":
                 if (R[3].getStatus() == false) {
                     R[3].order(durasi);
                 } else {
                     System.out.println("Already Booked");
                 }
                 break;
-            case "P102":
+            case "P202":
                 if (R[4].getStatus() == false) {
                     R[4].order(durasi);
                 } else {
                     System.out.println("Already Booked");
                 }
                 break;
-            case "P103":
+            case "P203":
                 if (R[5].getStatus() == false) {
                     R[5].order(durasi);
                 } else {
                     System.out.println("Already Booked");
                 }
                 break;
-            case "R101":
+            case "R301":
                 if (R[6].getStatus() == false) {
                     R[6].order(durasi);
                 } else {
                     System.out.println("Already Booked");
                 }
                 break;
-            case "R102":
+            case "R302":
                 if (R[7].getStatus() == false) {
                     R[7].order(durasi);
                 } else {
                     System.out.println("Already Booked");
                 }
                 break;
-            case "R103":
+            case "R303":
                 if (R[8].getStatus() == false) {
                     R[8].order(durasi);
                 } else {
@@ -120,6 +120,76 @@ public class Room {
         };
         
     };
+    
+    public double getHarga(int id){
+        switch (id) {
+            case 101: 
+                return R[0].getharga();
+              
+            case 102:
+                return R[1].getharga();
+              
+            case 103:
+                return R[2].getharga();
+               
+            case 201:
+                return R[3].getharga();
+                
+            case 202:
+                 return R[4].getharga();
+                 
+            case 203:
+                return R[5].getharga();
+                
+            case 301:
+                return R[6].getharga();
+             
+            case 302:
+                return R[7].getharga();
+              
+            case 303:
+                return R[8].getharga();
+            
+
+        };
+       // return R[id].getharga();
+        return 0;
+    }
+    
+    public String roomchooser(int id){
+        switch (id) {
+            case 101: 
+                return R[0].roomchooser();
+              
+            case 102:
+                return R[1].roomchooser();
+              
+            case 103:
+                return R[2].roomchooser();
+               
+            case 201:
+                return R[3].roomchooser();
+                
+            case 202:
+                 return R[4].roomchooser();
+                 
+            case 203:
+                return R[5].roomchooser();
+                
+            case 301:
+                return R[6].roomchooser();
+             
+            case 302:
+                return R[7].roomchooser();
+              
+            case 303:
+                return R[8].roomchooser();
+            
+
+        };
+        //return R[id].roomchooser();
+        return null;
+    }
     
     public void displayAllRoom(){
         for (int i = 0; i<jumlahkamar; i++){

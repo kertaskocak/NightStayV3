@@ -15,25 +15,28 @@ public class RRoyal extends RTemplate{
     private int hari;
     private String roomid;
     private boolean status = false;
-    
-    public RRoyal(String id){
+
+    public RRoyal(String id) {
         roomid = id;
     }
-    
+
     @Override
-    public void order(int h){
+    public void order(int h) {
         hari = h;
         total = harga * hari;
         status = true;
-        
+
         System.out.println("Room Ordered: " + roomid);
         System.out.println("Durasi: " + hari + " malam");
         System.out.println("Subtotal: Rp" + total);
     }
 
-    
+    public String roomchooser() {
+        return roomid;
+    }
+
     @Override
-    public double getharga(){
+    public double getharga() {
         return harga;
     }
     

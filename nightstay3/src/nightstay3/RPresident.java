@@ -30,6 +30,11 @@ public class RPresident extends RTemplate{
         System.out.println("Durasi: " + hari + " malam");
         System.out.println("Subtotal: Rp" + total);
     }
+    
+    public String roomchooser(){
+            return roomid;
+    }
+    
 
     
     @Override

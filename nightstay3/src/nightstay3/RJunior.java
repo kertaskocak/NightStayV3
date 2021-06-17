@@ -31,6 +31,10 @@ public class RJunior extends RTemplate{
         System.out.println("Subtotal: Rp" + total);
     }
 
+     @Override
+    public String roomchooser(){
+            return roomid;
+    }
     
     @Override
     public double getharga(){
