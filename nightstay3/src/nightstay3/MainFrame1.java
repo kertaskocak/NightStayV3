@@ -158,6 +158,8 @@ public class MainFrame1 extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         finalcheckin = new javax.swing.JLabel();
         finalcheckout = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        finalroomnumber = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -529,6 +531,11 @@ public class MainFrame1 extends javax.swing.JFrame {
         jCheckBox1.setText("Payed");
 
         savebtn.setText("Save");
+        savebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                savebtnActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Send to Mail");
 
@@ -550,6 +557,12 @@ public class MainFrame1 extends javax.swing.JFrame {
 
         finalcheckout.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         finalcheckout.setText(": x");
+
+        jLabel11.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel11.setText("Room Number");
+
+        finalroomnumber.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        finalroomnumber.setText("101");
 
         javax.swing.GroupLayout summaryLayout = new javax.swing.GroupLayout(summary);
         summary.setLayout(summaryLayout);
@@ -578,11 +591,6 @@ public class MainFrame1 extends javax.swing.JFrame {
                                         .addComponent(finalduration)
                                         .addGap(0, 175, Short.MAX_VALUE))))
                             .addGroup(summaryLayout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(37, 37, 37)
-                                .addComponent(finalroom)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(summaryLayout.createSequentialGroup()
                                 .addGroup(summaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel9)
                                     .addComponent(jLabel13)
@@ -599,7 +607,18 @@ public class MainFrame1 extends javax.swing.JFrame {
                                             .addComponent(finalroomprice)
                                             .addComponent(finalcheckout)
                                             .addComponent(finalcheckin))
-                                        .addGap(0, 0, Short.MAX_VALUE)))))))
+                                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGroup(summaryLayout.createSequentialGroup()
+                                .addGroup(summaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(summaryLayout.createSequentialGroup()
+                                        .addComponent(jLabel11)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(finalroomnumber))
+                                    .addGroup(summaryLayout.createSequentialGroup()
+                                        .addComponent(jLabel7)
+                                        .addGap(37, 37, 37)
+                                        .addComponent(finalroom)))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGap(28, 28, 28))
         );
         summaryLayout.setVerticalGroup(
@@ -607,7 +626,11 @@ public class MainFrame1 extends javax.swing.JFrame {
             .addGroup(summaryLayout.createSequentialGroup()
                 .addGap(61, 61, 61)
                 .addComponent(jLabel6)
-                .addGap(80, 80, 80)
+                .addGap(31, 31, 31)
+                .addGroup(summaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(finalroomnumber))
+                .addGap(32, 32, 32)
                 .addGroup(summaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(finalroom))
@@ -637,7 +660,7 @@ public class MainFrame1 extends javax.swing.JFrame {
                     .addComponent(savebtn)
                     .addComponent(backbtnroomoption)
                     .addComponent(jButton4))
-                .addGap(0, 85, Short.MAX_VALUE))
+                .addGap(0, 82, Short.MAX_VALUE))
         );
 
         jLayeredPane1.add(summary);
@@ -762,6 +785,9 @@ public class MainFrame1 extends javax.swing.JFrame {
                 finalduration.setText(": " + String.valueOf(day_gap) + " hari");
                 finalroomprice.setText(": Rp" + RM.getHarga(roomnum) + " /malam");
                 finalprice.setText(": Rp" + finaltotal);
+                finalcheckin.setText(": " + chkinday.toString());
+                finalcheckout.setText(": " + chkoutday.toString());
+                finalroomnumber.setText(room_num);
                 
             } else {
                 JOptionPane.showMessageDialog(null, "Please input an appropriate date",
@@ -836,11 +862,21 @@ public class MainFrame1 extends javax.swing.JFrame {
                 default:
                     jComboBox1.removeAllItems();
                     break;
+                    
+                
             } }catch (Exception e) {
             throw new RuntimeException(e);
 
         }
     }//GEN-LAST:event_roomtypecomboboxActionPerformed
+
+    private void savebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savebtnActionPerformed
+        //String boookid = finalroomnumber.toString();
+        int bookid = Integer.parseInt(jComboBox1.getSelectedItem().toString());
+        RM.setStatus(bookid);
+        jComboBox1.removeItem(jComboBox1.getSelectedItem().toString());
+// TODO add your handling code here:
+    }//GEN-LAST:event_savebtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -892,6 +928,7 @@ public class MainFrame1 extends javax.swing.JFrame {
     private javax.swing.JLabel finalduration;
     private javax.swing.JLabel finalprice;
     private javax.swing.JLabel finalroom;
+    private javax.swing.JLabel finalroomnumber;
     private javax.swing.JLabel finalroomprice;
     private javax.swing.JTextField firstnameinput;
     private javax.swing.JComboBox<String> genderComboBox;
@@ -906,6 +943,7 @@ public class MainFrame1 extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
