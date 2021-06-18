@@ -768,7 +768,7 @@ public class MainFrame1 extends javax.swing.JFrame {
         String froom;
         String room_num = jComboBox1.getSelectedItem().toString();
         
-        if()
+        //if()
         //int roomnum = Integer.parseInt(room_num);
 
         switch (room_num){

@@ -42,6 +42,38 @@ public class Room {
         
     };
     
+    public void setStatus(int id){
+    switch (id) {
+            case 101: 
+                R[0].setStatus(false);
+              
+            case 102:
+                R[1].setStatus(false);
+              
+            case 103:
+                R[2].setStatus(false);
+               
+            case 201:
+                R[3].setStatus(false);
+                
+            case 202:
+                 R[4].setStatus(false);
+                 
+            case 203:
+                R[5].setStatus(false);
+                
+            case 301:
+                R[6].setStatus(false);
+             
+            case 302:
+                R[7].setStatus(false);
+              
+            case 303:
+                R[8].setStatus(false);
+
+        };
+}
+    
     public void getStat(int id){
    
         if (R[id].getStatus() == true) {
@@ -120,6 +152,7 @@ public class Room {
         };
         
     };
+    
     
     public double getHarga(int id){
         switch (id) {
